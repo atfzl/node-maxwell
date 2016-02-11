@@ -1,8 +1,8 @@
-var map = require('lodash/map');
+var _ = require('lodash');
 
 module.exports = function maxwell (maxwellOptions) {
   if (typeof maxwellOptions == 'object') {
-    maxwellOptions = map(maxwellOptions, function (value, key) {
+    maxwellOptions = _.map(maxwellOptions, function (value, key) {
       return ('--' + key + '=' + value);
     });
   } else {

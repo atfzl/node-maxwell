@@ -13,6 +13,6 @@
   "author": "Atif Afzal",
   "license": "MIT",
   "dependencies": {
-    "lodash.map": "^4.1.0"
+    "lodash": "^4.3.0"
   }
 }
