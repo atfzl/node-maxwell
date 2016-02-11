@@ -3,13 +3,14 @@ module.exports = function maxwell (maxwellOptions) {
     maxwellOptions = [];
   }
   var spawn        = require('child_process').spawn,
+      path         = require('path'),
       readline     = require('readline'),
       EventEmitter = require('events').EventEmitter;
 
-  var maxwellProcess  = spawn('bin/maxwell', maxwellOptions, {cwd: './maxwells-daemon'}),
+  var maxwellProcess  = spawn(__dirname + '/maxwells-daemon/bin/maxwell', maxwellOptions, {cwd: __dirname + '/maxwells-daemon'}),
       maxwellReadLine = readline.createInterface({ input: maxwellProcess.stdout }),
       maxwellEmitter  = new EventEmitter();
-
+  
   maxwellProcess.stderr.on('data', function (err) {
     maxwellEmitter.emit('info', err.toString());
   });
@@ -23,6 +24,5 @@ module.exports = function maxwell (maxwellOptions) {
     }
   });
 
-  
   return maxwellEmitter;
 };
