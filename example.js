@@ -1,9 +1,9 @@
 var path       = require('path'),
     configPath = path.resolve('./config.properties.example');
 
-var maxwell = require('.')(
-  ['--config=' + configPath]
-);
+var maxwell = require('.')({
+  config: configPath
+});
 
 maxwell.on('info', function (info) {
   console.log(info);
