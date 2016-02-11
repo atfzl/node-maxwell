@@ -1,5 +1,11 @@
+var map = require('lodash/map');
+
 module.exports = function maxwell (maxwellOptions) {
-  if (!maxwellOptions) {
+  if (typeof maxwellOptions == 'object') {
+    maxwellOptions = map(maxwellOptions, function (value, key) {
+      return ('--' + key + '=' + value);
+    });
+  } else {
     maxwellOptions = [];
   }
   var spawn        = require('child_process').spawn,

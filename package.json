@@ -11,5 +11,8 @@
     "node"
   ],
   "author": "Atif Afzal",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash.map": "^4.1.0"
+  }
 }
