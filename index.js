@@ -26,7 +26,8 @@ module.exports = function maxwell (maxwellOptions) {
       var event = JSON.parse(line);
       maxwellEmitter.emit('data', event);
     } catch (e) {
-      console.log('node-maxwell Error, cannot JSON.parse: ', line);
+      console.log('node-maxwell Error: ', e);
+      console.log('data :', line);
     }
   });
 
