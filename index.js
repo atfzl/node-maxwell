@@ -22,13 +22,14 @@ module.exports = function maxwell (maxwellOptions) {
   });
 
   maxwellReadLine.on('line', function (line) {
+    var event;
     try {
-      var event = JSON.parse(line);
-      maxwellEmitter.emit('data', event);
+      event = JSON.parse(line);
     } catch (e) {
       console.log('node-maxwell Error: ', e);
       console.log('data :', line);
     }
+    maxwellEmitter.emit('data', event);
   });
 
   return maxwellEmitter;
