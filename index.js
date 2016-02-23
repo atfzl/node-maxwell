@@ -16,6 +16,10 @@ module.exports = function maxwell (maxwellOptions) {
   var maxwellProcess  = spawn(__dirname + '/maxwells-daemon/bin/maxwell', maxwellOptions, {cwd: __dirname + '/maxwells-daemon'}),
       maxwellReadLine = readline.createInterface({ input: maxwellProcess.stdout, terminal: false }),
       maxwellEmitter  = new EventEmitter();
+
+  maxwellProcess.on('exit', function (code) {
+    maxwellEmitter.emit('exit', code);
+  });
   
   maxwellProcess.stderr.on('data', function (err) {
     maxwellEmitter.emit('info', err.toString());

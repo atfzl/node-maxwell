@@ -5,6 +5,10 @@ var maxwell = require('.')({
   config: configPath
 });
 
+maxwell.on('exit', function (code) {
+  console.log('exit code', code);
+});
+
 maxwell.on('info', function (info) {
   console.log(info);
 });
