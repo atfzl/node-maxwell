@@ -4,7 +4,7 @@ base_dir=$(dirname $0)/..
 
 CLASSPATH=$CLASSPATH:$base_dir/target/classes:../open-replicator/target/classes
 
-for file in $base_dir/target/maxwell-*/*/lib/*.jar lib/*.jar target/dependency/*.jar
+for file in $base_dir/target/dependency/*.jar lib/*.jar
 do
   CLASSPATH=$CLASSPATH:$file
 done
@@ -17,5 +17,4 @@ fi
 
 export LANG="en_US.UTF-8"
 
-exec $JAVA -Dlog4j.shutdownCallbackRegistry=com.djdch.log4j.StaticShutdownCallbackRegistry -cp $CLASSPATH com.zendesk.maxwell.Maxwell "$@"
-
+exec $JAVA -Dlog4j.shutdownCallbackRegistry=com.djdch.log4j.StaticShutdownCallbackRegistry -cp $CLASSPATH com.zendesk.maxwell.bootstrap.MaxwellBootstrapUtility "$@"
