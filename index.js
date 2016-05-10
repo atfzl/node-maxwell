@@ -4,9 +4,9 @@ module.exports = function maxwell (maxwellOptions) {
   if (typeof maxwellOptions == 'object') {
     maxwellOptions = _.map(maxwellOptions, function (value, key) {
       return ('--' + key + '=' + value);
-    });
+    }).concat(['--bootstrapper=none']);
   } else {
-    maxwellOptions = [];
+    maxwellOptions = ['--bootstrapper=none'];
   }
   var spawn        = require('child_process').spawn,
       path         = require('path'),
